@@ -133,3 +133,5 @@ alembic upgrade head
 ![4_2](md.media/4_2.png)
 
 ## 5. Створюємо схеми валідації
+[contacts.py](src/schemas/contacts.py)
+
