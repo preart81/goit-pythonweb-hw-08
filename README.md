@@ -59,7 +59,7 @@ API, яке ви розробляєте, повинно підтримувати
 
 ## 2. Створення підключення до бази даних
 
-Для підключення до бази даних помістимо код з налаштуваннями в файл [src\conf\config.py](src/conf/config.py).  
+[src/conf/config.py](src/conf/config.py) - конфігураційні налаштування проєкту.  
 Клас Config містить інформацію для підключення до бази даних. Поки що він визначає змінну DB_URL, яка є рядком підключення до бази даних PostgreSQL.
 
 Для запуску бази даних postgres ми використовуємо Docker:
@@ -70,11 +70,11 @@ docker run --name some-postgres -p 5432:5432 -e POSTGRES_PASSWORD=mysecretpasswo
 
 За допомогою DBeaver створимо БД `hw8` в якій будемо працювати.
 
-Код підключення до БД помістимо у файл [src\database\db.py](src/database/db.py).
+[src/database/db.py](src/database/db.py) - модуль налаштування підключення до бази даних.
 
 ## 3. Створення моделей
 
-У файлі [src/database/models.py](src/database/models.py) створимо моделі.
+У файлі [src/database/models.py](src/database/models.py) створимо ORM-моделі.
 
 ## 4. Міграція моделей за допомогою alembic
 
@@ -129,9 +129,11 @@ alembic revision --autogenerate -m 'Init'
 ```shell
 alembic upgrade head
 ```
+
 Переконуємось, що зміни застосовані і в БД створені нові схеми:  
 ![4_2](md.media/4_2.png)
 
 ## 5. Створюємо схеми валідації
-[contacts.py](src/schemas/contacts.py)
+
+[src/schemas/contacts.py](src/schemas/contacts.py) - Pydantic-моделі для валідації вхідних/вихідних даних.
 
