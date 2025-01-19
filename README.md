@@ -78,6 +78,8 @@ docker run --name some-postgres -p 5432:5432 -e POSTGRES_PASSWORD=mysecretpasswo
 
 ## 4. Міграція моделей за допомогою alembic
 
+### 4.1. Налаштування alembic
+
 Ініціалізуємо оточення `alembic` з підтримкою асинхронності `-t async`
 
 ```shell
@@ -113,3 +115,21 @@ alembic init -t async alembic
   ```Py
   config.set_main_option("sqlalchemy.url", app_config.DB_URL)
   ```
+
+### 4.2. Створення та застосування міграцій
+
+Створюємо міграцію наступною консольною командою в корені проєкту:
+
+```Shell
+alembic revision --autogenerate -m 'Init'
+```
+
+Якщо файл з міграцією успішно створився в директорії migrations/versions, то застосуємо створену міграцію:
+
+```shell
+alembic upgrade head
+```
+Переконуємось, що зміни застосовані і в БД створені нові схеми:  
+![4_2](md.media/4_2.png)
+
+## 5. Створюємо схеми валідації
